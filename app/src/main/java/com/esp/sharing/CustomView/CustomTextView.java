@@ -27,16 +27,12 @@ public class CustomTextView extends TextView {
                 FontManager.init(context.getAssets());
                 Typeface tf = FontManager.getInstance().getFont(fontAsset);
                 int style = 0;
-                float size = this.getTextSize();
                 if (this.getTypeface() != null) {
                     style = this.getTypeface().getStyle();
                 }
 
                 if (tf != null) {
                     this.setTypeface(tf, style);
-                    Log.d("FontText", tf.getStyle() + "");
-                } else {
-                    Log.d("FontText", String.format("Could not create a font from asset: %s", new Object[]{fontAsset}));
                 }
             }
         }
@@ -46,6 +42,6 @@ public class CustomTextView extends TextView {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public CustomTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+        this(context, attrs, 0);
     }
 }
