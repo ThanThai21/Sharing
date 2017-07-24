@@ -52,7 +52,7 @@
                     android:layout_weight="1"
                     android:src="@drawable/ic_person" />
 
-                <EditText
+                <com.esp.sharing.CustomView.CustomEditText
                     android:id="@+id/dialog_name_edt"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -92,7 +92,7 @@
                     android:layout_weight="1"
                     android:src="@drawable/ic_smartphone" />
 
-                <EditText
+                <com.esp.sharing.CustomView.CustomEditText
                     android:id="@+id/dialog_phone_edt"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -131,7 +131,7 @@
                     android:layout_weight="1"
                     android:src="@drawable/ic_location" />
 
-                <EditText
+                <com.esp.sharing.CustomView.CustomEditText
                     android:id="@+id/dialog_location_edt"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -169,7 +169,7 @@
                     android:layout_weight="1"
                     android:src="@drawable/ic_description" />
 
-                <EditText
+                <com.esp.sharing.CustomView.CustomEditText
                     android:id="@+id/dialog_description_edt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
