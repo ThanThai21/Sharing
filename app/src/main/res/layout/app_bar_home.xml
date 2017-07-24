@@ -18,14 +18,28 @@
         android:elevation="1dp"
         android:translationZ="5dp">
 
-        <ImageButton
-            android:id="@+id/toolbar_search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="10dp"
-            android:background="@android:color/transparent"
-            android:src="@android:drawable/ic_menu_search" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.esp.sharing.CustomView.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/app_name"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:textColor="@color/colorTextBlack"/>
+
+            <TextView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:paddingEnd="10dp"
+                android:drawableRight="@android:drawable/ic_menu_search"/>
+        </RelativeLayout>
+
+
 
     </android.support.v7.widget.Toolbar>
 

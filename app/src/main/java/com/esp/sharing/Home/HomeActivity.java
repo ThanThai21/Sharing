@@ -3,7 +3,6 @@ package com.esp.sharing.Home;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
@@ -20,11 +19,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.esp.sharing.Database.Database;
 import com.esp.sharing.Database.DatabaseManager;
-import com.esp.sharing.Database.LocalDatabase;
 import com.esp.sharing.Login.LoginActivity;
 import com.esp.sharing.Model.Seller;
 import com.esp.sharing.R;
@@ -35,11 +33,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
@@ -50,12 +44,7 @@ public class HomeActivity extends AppCompatActivity
     private GoogleMap mMap;
 
     private Toolbar toolbar;
-    private ImageButton toolbarSearchButton;
-
-//    private ArrayList<Marker> historyMarkerList;
-//    private ArrayList<Marker> favoriteMarkerList;
-//    private ArrayList<Seller> historyList;
-//    private ArrayList<Seller> favoriteList;
+    private TextView searchBar;
 
 
     @Override
@@ -70,9 +59,6 @@ public class HomeActivity extends AppCompatActivity
 
     private void initDB() {
         DatabaseManager.database = new Database(this);
-        DatabaseManager.localDatabase = new LocalDatabase(this);
-//        historyList = DatabaseManager.getHistory();
-//        favoriteList = DatabaseManager.getFavorite();
     }
 
     private void initToolbar() {
@@ -86,8 +72,8 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        toolbarSearchButton = (ImageButton) toolbar.findViewById(R.id.toolbar_search_button);
-        toolbarSearchButton.setOnClickListener(new View.OnClickListener() {
+        searchBar = (TextView) toolbar.findViewById(R.id.search_view);
+        searchBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
@@ -114,9 +100,6 @@ public class HomeActivity extends AppCompatActivity
             layoutParams.setMargins(0, 0, 30, 30);
         }
         mapFragment.getMapAsync(this);
-
-//        historyMarkerList = new ArrayList<>();
-//        favoriteMarkerList = new ArrayList<>();
     }
 
     @Override
@@ -144,9 +127,9 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }else if (id == R.id.nav_favorite) {
-//            showFavorite();
+
         } else if (id == R.id.nav_history) {
-//            showHistory();
+
         } else if (id == R.id.nav_complain) {
 
         } else if (id == R.id.nav_rate) {
@@ -160,33 +143,7 @@ public class HomeActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return false;
     }
-/*
 
-    private void showFavorite() {
-        for (Marker historyMarker : historyMarkerList) {
-            historyMarker.setVisible(false);
-        }
-        if (favoriteList.size() == 0) {
-            Toast.makeText(this, "Bạn không có yêu thích", Toast.LENGTH_SHORT).show();
-        }
-        for (Marker marker : favoriteMarkerList) {
-            marker.setVisible(true);
-        }
-    }
-
-    private void showHistory() {
-        for (Marker favoriteMarker : favoriteMarkerList) {
-            favoriteMarker.setVisible(false);
-        }
-        if (historyList.size() == 0) {
-            Toast.makeText(this, "Bạn không có lịch sử", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        for (Marker marker : historyMarkerList) {
-            marker.setVisible(true);
-        }
-    }
-*/
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -204,30 +161,7 @@ public class HomeActivity extends AppCompatActivity
             LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
             mMap.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(13), 2000, null);
-            Geocoder geocoder = new Geocoder(this);
         }
-//        for (Seller seller : historyList) {
-//            try {
-//                Address address = geocoder.getFromLocationName(seller.getLocation(), 1).get(0);
-//                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-//                Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(seller.getName()));
-//                marker.setVisible(false);
-//                historyMarkerList.add(marker);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        for (Seller seller : favoriteList) {
-//            try {
-//                Address address = geocoder.getFromLocationName(seller.getLocation(), 1).get(0);
-//                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-//                Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(seller.getName()));
-//                marker.setVisible(false);
-//                favoriteMarkerList.add(marker);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
 
     }
 
@@ -236,25 +170,7 @@ public class HomeActivity extends AppCompatActivity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SEARCH) {
-            List<Seller> list = DatabaseManager.getHistory();
-            Geocoder geocoder = new Geocoder(this);
-//            int oldLenght = historyList.size();
-//            if (oldLenght >= list.size()) {
-//                return;
-//            }
-//            for (int i = oldLenght - 1; i < list.size(); i++) {
-//                Seller seller = list.get(i);
-//                historyList.add(seller);
-//                try {
-//                    Address address = geocoder.getFromLocationName(seller.getLocation(), 1).get(0);
-//                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-//                    Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(seller.getName()));
-//                    marker.setVisible(false);
-//                    historyMarkerList.add(marker);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
+
         }
     }
 }
