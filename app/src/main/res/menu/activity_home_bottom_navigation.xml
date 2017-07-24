@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_nav_profile"
+        android:icon="@drawable/ic_user"
+        android:title="Profile" />
+    <item
+        android:id="@+id/bottom_nav_password"
+        android:icon="@drawable/ic_password"
+        android:title="Password" />
+    <item
+        android:id="@+id/bottom_nav_app"
+        android:icon="@drawable/ic_app"
+        android:title="Application"/>
+</menu>

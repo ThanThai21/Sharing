@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_login"
+        android:icon="@drawable/ic_person"
+        android:title="Đăng nhập" />
+    <item
+        android:id="@+id/nav_setting"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Cài đặt"/>
+    <item
+        android:id="@+id/nav_favorite"
+        android:icon="@drawable/ic_favorite"
+        android:title="Yêu thích" />
+    <item
+        android:id="@+id/nav_history"
+        android:icon="@drawable/ic_history"
+        android:title="Lịch sử" />
+    <item
+        android:id="@+id/nav_complain"
+        android:icon="@drawable/ic_complaint"
+        android:title="Khiếu nại" />
+    <item
+        android:id="@+id/nav_rate"
+        android:icon="@drawable/ic_star"
+        android:title="Đánh giá" />
+    <item
+        android:id="@+id/nav_share"
+        android:icon="@drawable/ic_menu_share"
+        android:title="Chia sẻ" />
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_logout"
+        android:title="Đăng xuất"
+        android:visible="false"/>
+
+</menu>

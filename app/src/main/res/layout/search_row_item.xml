@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+    <ImageView
+        android:id="@+id/search_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/ic_launcher"/>
+    <TextView
+        android:id="@+id/search_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@id/search_avatar"
+        android:text="Thân Văn Thái"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/search_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@id/search_avatar"
+        android:layout_below="@id/search_name"
+        android:text="01675801065 - Không có mô tả"
+        android:textSize="14sp"/>
+</RelativeLayout>

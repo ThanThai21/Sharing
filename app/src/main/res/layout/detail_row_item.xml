@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5dp"
+    android:paddingRight="5dp"
+    android:background="@drawable/bg_round_corner"
+    android:translationZ="1dp">
+
+
+    <ImageView
+        android:id="@+id/product_image_view"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/product_name"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/food"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/product_name"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Thực phẩm"
+        android:maxLines="1"
+        android:gravity="start"
+        android:textSize="17sp"
+        android:textColor="@color/colorTextBlack"
+        android:textStyle="bold"
+        android:layout_above="@+id/product_price"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/product_price"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="100.000 VND"
+        android:maxLines="1"
+        android:textColor="@android:color/holo_red_dark"
+        android:gravity="start"
+        android:textSize="16sp"
+        android:scaleX="1.1"/>
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/colorLoginBackground"
+    tools:context="com.esp.sharing.Login.LoginActivity">
+
+    <Button
+        android:id="@+id/login_facebook_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="@dimen/loginButtonMargin"
+        android:layout_marginRight="@dimen/loginButtonMargin"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_login_button"
+        android:paddingLeft="20dp"
+        android:drawableLeft="@drawable/ic_facebook"
+        android:text="Đăng nhập với Facebook"
+        android:textAllCaps="false"
+        android:textColor="@color/colorTextWhite"
+        android:textSize="@dimen/textSizeButton" />
+
+    <Button
+        android:id="@+id/login_google_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="@dimen/loginButtonMargin"
+        android:layout_marginRight="@dimen/loginButtonMargin"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_login_button"
+        android:paddingLeft="20dp"
+        android:drawableLeft="@drawable/ic_google"
+        android:text="Đăng nhập với Google"
+        android:textAllCaps="false"
+        android:textColor="@color/colorTextWhite"
+        android:textSize="@dimen/textSizeButton" />
+
+</LinearLayout>
