@@ -105,4 +105,10 @@ public class Seller {
     public void setProductList(ArrayList<Product> productList) {
         this.productList = productList;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        final Seller seller = (Seller) obj;
+        return  seller.getId() == this.getId();
+    }
 }

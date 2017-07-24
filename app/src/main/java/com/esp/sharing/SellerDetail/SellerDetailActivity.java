@@ -20,9 +20,11 @@ import android.widget.TextView;
 
 import com.esp.sharing.Database.DatabaseManager;
 import com.esp.sharing.Helper.DialogHelper;
+import com.esp.sharing.Helper.FavoriteHandler;
 import com.esp.sharing.Model.Product;
 import com.esp.sharing.Model.Seller;
 import com.esp.sharing.R;
+import com.esp.sharing.Search.SearchActivity;
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 
 import org.json.JSONArray;
@@ -53,6 +55,9 @@ public class SellerDetailActivity extends AppCompatActivity {
     private boolean isFavorite = false;
 
     private Seller seller;
+
+    private FavoriteHandler db;
+    private ArrayList<String> favoriteList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,9 +100,13 @@ public class SellerDetailActivity extends AppCompatActivity {
                 if (isFavorite) {
                     favoriteIcon.setImageResource(R.drawable.ic_nofavorite);
                     isFavorite = false;
+                    db.deleteFav_Seller(String.valueOf(seller.getId()));
+                    favoriteList.remove(String.valueOf(seller.getId()));
                 } else {
                     favoriteIcon.setImageResource(R.drawable.ic_favorite);
                     isFavorite = true;
+                    db.addFav_Seller(String.valueOf(seller.getId()));
+                    favoriteList.add(String.valueOf(seller.getId()));
                 }
             }
         });
@@ -114,6 +123,8 @@ public class SellerDetailActivity extends AppCompatActivity {
     }
 
     private void getData() {
+        db = new FavoriteHandler(this);
+        favoriteList = db.favSellers();
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("seller");
         int id = bundle.getInt("id");
@@ -121,6 +132,7 @@ public class SellerDetailActivity extends AppCompatActivity {
         String phone = bundle.getString("phone");
         String location = bundle.getString("location");
         String description = bundle.getString("description");
+        isFavorite = favoriteList.contains(String.valueOf(id));
         seller = new Seller(id, name, phone, location, "", description);
     }
 

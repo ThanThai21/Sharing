@@ -29,14 +29,40 @@
         android:layout_marginTop="10dp"
         android:textSize="18sp"/>
 
-    <ListView
-        android:id="@+id/search_result_listview"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:elevation="5dp"
-        android:translationZ="5dp"/>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:text="@string/no_database"
+            android:textSize="24sp"
+            android:id="@+id/no_data_notification"
+            android:textColor="@color/oslo_gray"
+            android:gravity="center" />
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="30dp"
+            android:id="@+id/progress_search"
+            android:visibility="invisible"/>
+
+        <ListView
+            android:id="@+id/search_result_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:dividerHeight="0dp"
+            android:divider="@android:color/transparent"
+            android:elevation="5dp"
+            android:translationZ="5dp"/>
+
+    </RelativeLayout>
+
 
 </LinearLayout>
